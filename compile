@@ -1,0 +1,3 @@
+clang++ -c src/Game.cpp -I ~/SFML-2.1/include -I ./include
+clang++ Game.o -o bin/game -L ~/SFML-2.1/lib -lsfml-graphics -lsfml-window -lsfml-system
+rm Game.o
