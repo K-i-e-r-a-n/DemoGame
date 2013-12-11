@@ -3,3 +3,4 @@ setPath.bat
 src/*.o
 bin/*
 Makefile
+SFML-*
