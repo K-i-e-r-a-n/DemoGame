@@ -2,10 +2,42 @@
 #include "World.hpp"
 #include <iostream>
 
+void drawWorld(World &world, sf::Vector2f &aspectRatio, sf::RenderWindow &window) {
+	//drawing terrain
+	std::vector<Chunk*> chunks = world.getChunks();
+	for (auto chunk : chunks) {
+		std::vector<sf::Vertex> vertices = chunk->getVertices();
+		for (int a = 0; a < vertices.size(); a++) {
+			sf::Vertex line[2];	
+			if (a != vertices.size()-1) {
+				line[0] = vertices[a];
+				line[1] = vertices[a+1];
+			}
+			else {
+				line[0] = vertices[a];
+				line[1] = vertices[0];
+			}	
+			
+			line[0].position.x = line[0].position.x * aspectRatio.x * 10;
+			line[0].position.y = window.getSize().y - (line[0].position.y * aspectRatio.y * 10);
+			line[1].position.x = line[1].position.x * aspectRatio.x * 10;
+			line[1].position.y = window.getSize().y - (line[1].position.y * aspectRatio.y * 10);
+			window.draw(line, 2, sf::Lines);
+			line[0].position.x = line[0].position.x / aspectRatio.x / 10;
+			line[0].position.y = window.getSize().y - (line[0].position.y / aspectRatio.y / 10);
+			line[1].position.x = line[1].position.x / aspectRatio.x / 10;
+			line[1].position.y = window.getSize().y - (line[1].position.y / aspectRatio.y / 10);
+		}
+	} //end terrain
+
+
+}
+ 
 int main(int argc, char *argv[])
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600) , "SFML works!");
-	World world;
+    sf::RenderWindow window(sf::VideoMode(1600, 900) , "SFML works!");
+		sf::Vector2f aspectRatio(16, 9);
+		World world;
 
     while (window.isOpen())
     {
@@ -16,27 +48,8 @@ int main(int argc, char *argv[])
                 window.close();
         }
 
-        window.clear();
-		
-		//drawing terrain
-		std::vector<Chunk*> chunks = world.getChunks();
-		for (int a = 0; a < chunks.size(); a++) {
-			std::vector<sf::Vertex> vertices = chunks[a]->getVertices();
-			for (int b = 0; b < vertices.size() - 1; b++) {
-
-				vertices[b].position.x = vertices[b].position.x*10 + 10;
-				vertices[b].position.y = vertices[b].position.y*10 + 10;
-				vertices[b+1].position.x = vertices[b+1].position.x*10 + 10;
-				vertices[b+1].position.y = vertices[b+1].position.y*10 + 10;
-				sf::Vertex line [] = { vertices[b], vertices[b+1] };
-				window.draw(line, 2, sf::Lines);
-				vertices[b].position.x = (vertices[b].position.x - 10)/10;
-				vertices[b].position.y = (vertices[b].position.y - 10)/10;
-				vertices[b+1].position.x = (vertices[b+1].position.x - 10)/10;
-				vertices[b+1].position.y = (vertices[b+1].position.y - 10)/10;
-			}
-		}
-
+        window.clear();	
+				drawWorld(world, aspectRatio, window);
         window.display();
     }
 
