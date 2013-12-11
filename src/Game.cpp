@@ -2,34 +2,21 @@
 #include "World.hpp"
 #include <iostream>
 
+void convertToPixels(sf::Vertex &vertex, sf::Vector2f &aspectRatio,  float conversion, float height) {
+	vertex.position.x = vertex.position.x * conversion * aspectRatio.x ;
+	vertex.position.y = height - (vertex.position.y * conversion * aspectRatio.y);
+}
+
 void drawWorld(World &world, sf::Vector2f &aspectRatio, sf::RenderWindow &window) {
 	//drawing terrain
 	std::vector<Chunk*> chunks = world.getChunks();
 	for (auto chunk : chunks) {
 		std::vector<sf::Vertex> vertices = chunk->getVertices();
 		for (int a = 0; a < vertices.size(); a++) {
-			sf::Vertex line[2];	
-			if (a != vertices.size()-1) {
-				line[0] = vertices[a];
-				line[1] = vertices[a+1];
-			}
-			else {
-				line[0] = vertices[a];
-				line[1] = vertices[0];
-			}	
-			
-			line[0].position.x = line[0].position.x * aspectRatio.x * 10;
-			line[0].position.y = window.getSize().y - (line[0].position.y * aspectRatio.y * 10);
-			line[1].position.x = line[1].position.x * aspectRatio.x * 10;
-			line[1].position.y = window.getSize().y - (line[1].position.y * aspectRatio.y * 10);
-			window.draw(line, 2, sf::Lines);
-			line[0].position.x = line[0].position.x / aspectRatio.x / 10;
-			line[0].position.y = window.getSize().y - (line[0].position.y / aspectRatio.y / 10);
-			line[1].position.x = line[1].position.x / aspectRatio.x / 10;
-			line[1].position.y = window.getSize().y - (line[1].position.y / aspectRatio.y / 10);
+			convertToPixels(vertices[a], aspectRatio, 10, window.getSize().y);
 		}
-	} //end terrain
-
+		window.draw(&vertices[0], vertices.size(), sf::LinesStrip);
+	}
 
 }
  
