@@ -1,2 +1,4 @@
 *.vimrc
 setPath.bat
+src/*.o
+bin/*
