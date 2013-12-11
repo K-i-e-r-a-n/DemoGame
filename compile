@@ -1,3 +1,5 @@
-clang++ -c src/Game.cpp -I ~/SFML-2.1/include -I ./include
-clang++ Game.o -o bin/game -L ~/SFML-2.1/lib -lsfml-graphics -lsfml-window -lsfml-system
-rm Game.o
+cd src
+clang++ -c Game.cpp Physics.cpp Chunk.cpp World.cpp Entity.cpp  -I ~/SFML-2.1/include -I ../include
+cd ..
+
+clang++ src/Game.o src/Physics.o src/Chunk.o src/World.o src/Entity.o -o bin/game  -L ~/SFML-2.1/lib -lsfml-graphics -lsfml-window -lsfml-system
