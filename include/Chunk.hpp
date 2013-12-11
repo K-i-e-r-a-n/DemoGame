@@ -5,7 +5,8 @@
 
 class Chunk {
 	public:
-		Chunk();
+		Chunk(std::vector<sf::Vertex> &vertices);
+		std::vector<sf::Vertex> getVertices();
 	private:
 		std::vector<sf::Vertex> vertices;
 };
