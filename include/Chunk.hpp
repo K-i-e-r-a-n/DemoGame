@@ -3,6 +3,7 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include "Engine.hpp"
+#include <cmath>
 
 class Chunk {
 	public:
