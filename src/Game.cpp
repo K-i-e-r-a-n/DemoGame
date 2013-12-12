@@ -2,7 +2,7 @@
 #include "World.hpp"
 #include <iostream>
 
-void convertToPixels(sf::Vertex &vertex, sf::Vector2f &aspectRatio,  float conversion, float height) {
+/*void convertToPixels(sf::Vertex &vertex, sf::Vector2f &aspectRatio,  float conversion, float height) {
 	vertex.position.x = vertex.position.x * conversion * aspectRatio.x ;
 	vertex.position.y = height - (vertex.position.y * conversion * aspectRatio.y);
 }
@@ -18,12 +18,13 @@ void drawWorld(World &world, sf::Vector2f &aspectRatio, sf::RenderWindow &window
 		window.draw(&vertices[0], vertices.size(), sf::LinesStrip);
 	}
 
-}
+}*/
  
 int main(int argc, char *argv[])
 {
     sf::RenderWindow window(sf::VideoMode(1600, 900) , "SFML works!");
 		sf::Vector2f aspectRatio(16, 9);
+		float conversion = 10;
 		World world;
 
     while (window.isOpen())
@@ -35,8 +36,8 @@ int main(int argc, char *argv[])
                 window.close();
         }
 
-        window.clear();	
-				drawWorld(world, aspectRatio, window);
+        window.clear();
+		world.draw(window, aspectRatio, conversion);
         window.display();
     }
 
