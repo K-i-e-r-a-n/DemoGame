@@ -22,7 +22,7 @@ void drawWorld(World &world, sf::Vector2f &aspectRatio, sf::RenderWindow &window
  
 int main(int argc, char *argv[])
 {
-    sf::RenderWindow window(sf::VideoMode(1600, 900) , "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(1600, 900) , "RPG");
 		sf::Vector2f aspectRatio(16, 9);
 		float conversion = 10;
 		World world;
