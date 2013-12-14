@@ -8,7 +8,7 @@ World::World() {
     vertices.push_back(new sf::Vertex(sf::Vector2f(3, 1)));
     vertices.push_back(new sf::Vertex(sf::Vector2f(3, 5)));
     vertices.push_back(new sf::Vertex(sf::Vector2f(4, 6)));
-    vertices.push_back(new sf::Vertex(sf::Vector2f(4, 5)));
+    vertices.push_back(new sf::Vertex(sf::Vector2f(3, 5)));
     vertices.push_back(new sf::Vertex(sf::Vector2f(5, 1)));
 	chunks.push_back(new Chunk(vertices));	
 }
