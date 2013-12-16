@@ -9,9 +9,12 @@ std::vector<sf::Vertex> Engine::convertToPixels(std::vector<sf::Vertex*> vertice
 	for (int a  = 0; a < vertices.size(); a++) {
 		copy[a].position.x = copy[a].position.x * aspectRatio.x * conversion;
 		copy[a].position.y = height - (copy[a].position.y * aspectRatio.y * conversion);
+		copy[a].texCoords.x = copy[a].position.x * aspectRatio.x * conversion;
+		copy[a].texCoords.y = height - (copy[a].position.y * aspectRatio.y * conversion);
 	}
 	return copy;
 }
+
 sf::Vertex* Engine::getElement(std::vector<sf::Vertex*> vertices, int i)
 {
 	if (i >= vertices.size())
