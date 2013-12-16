@@ -1,6 +1,6 @@
-**.vimrc
+
 setPath.bat
-src/**.o
+src/*.o
 bin/**
 Makefile
 run
