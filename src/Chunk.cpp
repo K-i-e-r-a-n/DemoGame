@@ -20,7 +20,6 @@ void Chunk::draw(sf::RenderWindow &window, sf::Vector2f &aspectRatio, float conv
 	int previousSize = copy.size();
 	while (copy.size() > 2)
 	{
-		
 		if (i >= copy.size())
 		{
 			i = 0;
@@ -36,7 +35,7 @@ void Chunk::draw(sf::RenderWindow &window, sf::Vector2f &aspectRatio, float conv
 		//theta = acos((u[0]*v[0] + u[1]*v[1])/(sqrt(pow(u[0], 2) + pow(u[1], 2))*sqrt(pow(v[0], 2) + pow(v[1], 2))));
 		//std::cout << theta << std::endl;
 		//sf::sleep(sf::seconds(1));
-        float normalK = u[0]*v[1] - v[0]*u[1]; 
+                float normalK = u[0]*v[1] - v[0]*u[1]; 
 		if (normalK < 0)
 		{
 			triangles.push_back(Engine::getElement(copy, i));
@@ -51,6 +50,7 @@ void Chunk::draw(sf::RenderWindow &window, sf::Vector2f &aspectRatio, float conv
 	}
 	window.draw(&(Engine::convertToPixels(triangles, aspectRatio, conversion, window.getSize().y))[0], triangles.size(), sf::Triangles);
 	
-	window.draw(&(Engine::convertToPixels(vertices, aspectRatio, conversion, window.getSize().y))[0], vertices.size(), sf::LinesStrip);
+	//window.draw(&(Engine::convertToPixels(vertices, aspectRatio, conversion, window.getSize().y))[0], vertices.size(), sf::LinesStrip);
 }
+
 

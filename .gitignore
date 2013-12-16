@@ -1,7 +1,6 @@
-*.vimrc
+**.vimrc
 setPath.bat
-src/*.o
-bin/*
+src/**.o
+bin/**
 Makefile
-SFML-*
 run
