@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
             text.setString(ss.str());
             window.draw(text);
         }
-		world.draw(window, aspectRatio, conversion);
+	world.draw(window, aspectRatio, conversion);
         window.display();
     }
 
