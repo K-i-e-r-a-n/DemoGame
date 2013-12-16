@@ -17,7 +17,7 @@ class Player : public Entity {
 		Player(double mass, sf::Vector2f size, sf::Vector2f position);
 	private:
 		sf::Vector2f velocity;
-		sf::Vector2f acceleration;
+		sf::Vector2f accel;
 };
 
 #endif

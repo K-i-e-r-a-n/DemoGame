@@ -7,5 +7,8 @@ Entity::Entity(double mass, sf::Vector2f size, sf::Vector2f position) {
 }
 
 Player::Player(double mass, sf::Vector2f size, sf::Vector2f position) : Entity(mass, size, position){
-	//todo
+	velocity.x = 0;
+	velocity.y = 0;
+	accel.x = 0;
+	accel.y = 0;
 }
