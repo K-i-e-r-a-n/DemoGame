@@ -38,9 +38,9 @@ std::vector<sf::Vertex> Game::convertToPixels(std::vector<sf::Vertex*> vertices)
 
 	for (int a  = 0; a < vertices.size(); a++) {
 		copy[a].position.x = copy[a].position.x * aspectRatio.x * conversion;
-		copy[a].position.y = window.size.y - (copy[a].position.y * aspectRatio.y * conversion);
+		copy[a].position.y = window.getSize().y - (copy[a].position.y * aspectRatio.y * conversion);
 		copy[a].texCoords.x = copy[a].position.x * aspectRatio.x * conversion;
-		copy[a].texCoords.y = window.size.y - (copy[a].position.y * aspectRatio.y * conversion);
+		copy[a].texCoords.y = window.getSize().y - (copy[a].position.y * aspectRatio.y * conversion);
 	}
 	return copy;
 }
