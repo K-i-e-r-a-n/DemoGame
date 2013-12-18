@@ -30,7 +30,7 @@ int Game::run() {
 	return 0;
 }
 
-std::vector<sf::Vertex> Game::convertToPixels(std::vector<sf::Vertex*> vertices, sf::Vector2f aspectRatio, float conversion, float height) {
+std::vector<sf::Vertex> Game::convertToPixels(std::vector<sf::Vertex*> vertices) {
 	std::vector<sf::Vertex> copy;
 	for (auto vertex : vertices) {
 		copy.push_back(*vertex);
@@ -38,9 +38,9 @@ std::vector<sf::Vertex> Game::convertToPixels(std::vector<sf::Vertex*> vertices,
 
 	for (int a  = 0; a < vertices.size(); a++) {
 		copy[a].position.x = copy[a].position.x * aspectRatio.x * conversion;
-		copy[a].position.y = height - (copy[a].position.y * aspectRatio.y * conversion);
+		copy[a].position.y = window.size.y - (copy[a].position.y * aspectRatio.y * conversion);
 		copy[a].texCoords.x = copy[a].position.x * aspectRatio.x * conversion;
-		copy[a].texCoords.y = height - (copy[a].position.y * aspectRatio.y * conversion);
+		copy[a].texCoords.y = window.size.y - (copy[a].position.y * aspectRatio.y * conversion);
 	}
 	return copy;
 }
