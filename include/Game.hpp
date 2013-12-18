@@ -12,7 +12,7 @@ class Game {
 	public:
 		static void init(float windowX, float windowY, float aspectX, float aspectY, float conv);
 		static std::vector<sf::Vertex> convertToPixels(std::vector<sf::Vertex*> vertices);
-		sf::Vertex* getElement(std::vector<sf::Vertex*> vertices, int i);
+		static sf::Vertex* getElement(std::vector<sf::Vertex*> vertices, int i);
 		static int run();
 		static void loadTexture(std::string textureName);
 
