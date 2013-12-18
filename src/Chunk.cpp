@@ -3,7 +3,7 @@
 
 Chunk::Chunk(std::vector<sf::Vertex*> &vertices) {
   this->vertices = vertices;
-  texture.loadFromFile("resources/ground.jpg");
+  background.loadFromFile("resources/ground.png");
 }
 
 std::vector<sf::Vertex*> Chunk::getVertices() {
@@ -48,7 +48,7 @@ void Chunk::draw(sf::RenderWindow &window, sf::Vector2f &aspectRatio, float conv
 	  }
 	  i++;
 	}
-  window.draw(&(Engine::convertToPixels(triangles, aspectRatio, conversion, window.getSize().y))[0], triangles.size(), sf::Triangles, &texture);
+  window.draw(&(Engine::convertToPixels(triangles, aspectRatio, conversion, window.getSize().y))[0], triangles.size(), sf::Triangles, &background);
 	//window.draw(&(Engine::convertToPixels(vertices, aspectRatio, conversion, window.getSize().y))[0], vertices.size(), sf::LinesStrip);
 }
 

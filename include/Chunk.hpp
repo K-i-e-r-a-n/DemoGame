@@ -12,7 +12,7 @@ class Chunk {
 		void draw(sf::RenderWindow &window, sf::Vector2f &aspectRatio, float conversion);
 	private:
 		std::vector<sf::Vertex*> vertices;
-    sf::Texture texture;
+    sf::Texture background;
 };
 
 #endif

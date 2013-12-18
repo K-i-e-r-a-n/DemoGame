@@ -1,7 +1,7 @@
 #include "World.hpp"
 
 World::World() {
-	//generate one funky chunky. Don't forget to texture.
+	//generate one funky chunk. Don't forget to .
   std::vector<sf::Vertex*> vertices;;
   vertices.push_back(new sf::Vertex(sf::Vector2f(1, 1), sf::Vector2f(1, 1)));
   vertices.push_back(new sf::Vertex(sf::Vector2f(1, 5), sf::Vector2f(1, 5)));
