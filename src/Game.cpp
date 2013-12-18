@@ -16,7 +16,14 @@ void Game::init(float windowX, float windowY, float aspectX, float aspectY, floa
 int Game::run() {
 	
 	while (gameState == 1) {
-		//dostuff	
+		sf::Event event;
+		while (window.pollEvent(event)) {
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		window.clear(sf::Color::Black);
+		window.display();
 	}
 
 	return 0;
