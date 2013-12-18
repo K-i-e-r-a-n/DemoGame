@@ -1,6 +1,3 @@
-#include "Chunk.hpp"
-#include <iostream>
-
 Chunk::Chunk(std::vector<sf::Vertex*> &vertices) {
   this->vertices = vertices;
   background.loadFromFile("resources/ground.png");
@@ -10,13 +7,13 @@ std::vector<sf::Vertex*> Chunk::getVertices() {
 	return vertices;
 }
 
-void Chunk::draw(sf::RenderWindow &window, sf::Vector2f &aspectRatio, float conversion) {
+void Chunk::draw() {
   std::vector<sf::Vertex*> copy = vertices;
   std::vector<sf::Vertex*> triangles;
   int i = 0;
   float theta = 0.0;
-  std::vector<float> u = {0.0, 0.0};
-  std::vector<float> v = {0.0, 0.0};
+  sf::Vector2f u;
+  sf::Vector2f v;
   int previousSize = copy.size();
   while (copy.size() > 2)
   {
@@ -28,19 +25,19 @@ void Chunk::draw(sf::RenderWindow &window, sf::Vector2f &aspectRatio, float conv
       else
 	      previousSize = copy.size();
 	  }
-    u[0] = (Engine::getElement(copy, i+1)->position.x - Engine::getElement(copy, i)->position.x); 
-    u[1] = (Engine::getElement(copy, i+1)->position.y - Engine::getElement(copy, i)->position.y);
-    v[0] = (Engine::getElement(copy, i+2)->position.x - Engine::getElement(copy, i+1)->position.x);
-    v[1] = (Engine::getElement(copy, i+2)->position.y - Engine::getElement(copy, i+1)->position.y);
-    //theta = acos((u[0]*v[0] + u[1]*v[1])/(sqrt(pow(u[0], 2) + pow(u[1], 2))*sqrt(pow(v[0], 2) + pow(v[1], 2))));
+    u.x = (Game::getElement(copy, i+1)->position.x - Game::getElement(copy, i)->position.x); 
+    u.y = (Game::getElement(copy, i+1)->position.y - Game::getElement(copy, i)->position.y);
+    v.x = (Game::getElement(copy, i+2)->position.x - Game::getElement(copy, i+1)->position.x);
+    v.y = (Game::getElement(copy, i+2)->position.y - Game::getElement(copy, i+1)->position.y);
+    //theta = acos((u.x*v.x + u.y*v.y)/(sqrt(pow(u.x, 2) + pow(u.y, 2))*sqrt(pow(v.x, 2) + pow(v.y, 2))));
     //std::cout << theta << std::endl;
     //sf::sleep(sf::seconds(1));
-    float normalK = u[0]*v[1] - v[0]*u[1]; 
+    float normalK = u.x*v.y - v.x*u.y;
     if (normalK < 0)
     {
-      triangles.push_back(Engine::getElement(copy, i));
-      triangles.push_back(Engine::getElement(copy, i+1));
-      triangles.push_back(Engine::getElement(copy, i+2));
+      triangles.push_back(Game::getElement(copy, i));
+      triangles.push_back(Game::getElement(copy, i+1));
+      triangles.push_back(Game::getElement(copy, i+2));
       if (i+1 >= copy.size())
         copy.erase(copy.begin() + (i+1)%copy.size());
 	    else
@@ -48,8 +45,8 @@ void Chunk::draw(sf::RenderWindow &window, sf::Vector2f &aspectRatio, float conv
 	  }
 	  i++;
 	}
-  window.draw(&(Engine::convertToPixels(triangles, aspectRatio, conversion, window.getSize().y))[0], triangles.size(), sf::Triangles, &background);
-	//window.draw(&(Engine::convertToPixels(vertices, aspectRatio, conversion, window.getSize().y))[0], vertices.size(), sf::LinesStrip);
+  Game::window.draw(&(Game::convertToPixels(triangles))[0], triangles.size(), sf::Triangles, &(Game::textures["background"]));
+	//Gwindow.draw(&(Game::convertToPixels(vertices))[0], vertices.size(), sf::LinesStrip);
 }
 
 
