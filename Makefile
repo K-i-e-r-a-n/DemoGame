@@ -8,7 +8,6 @@ game: $(OBJS)
 	$(CC) -o bin/game $(CXXFLAGS) $(LDFLAGS) $(OBJS)
 
 clean: 
-	rm bin/game
 	rm $(OBJS)
 
 .PHONY: clean

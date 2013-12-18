@@ -22,9 +22,3 @@ sf::Vertex* Engine::getElement(std::vector<sf::Vertex*> vertices, int i)
 	return vertices[i];
 }
 
-/*
-void Engine::loadTexture(std::string filename) {
-	sf::Texture * texture = new sf::Texture;
-	texture->loadFromFile(filename);
-}
-*/
