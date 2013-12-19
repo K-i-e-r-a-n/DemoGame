@@ -32,7 +32,7 @@ int Game::run() {
 
 		window.clear(sf::Color::Black);
 		for (auto world : worlds)
-			world->draw;
+			world->draw();
 		window.display();
 	}
 
