@@ -2,6 +2,7 @@
 #define GAME_HPP
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include "World.hpp"
 
 class Game {
 	private:
@@ -10,6 +11,7 @@ class Game {
 		static float conversion;
 		static int gameState;
 		static std::map<std::string, sf::Texture> textures;
+		static std::vector<World*> worlds;
 	
 	public:
 		static void init(float windowX, float windowY, float aspectX, float aspectY, float conv);

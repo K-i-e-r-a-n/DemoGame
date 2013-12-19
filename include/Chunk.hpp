@@ -12,7 +12,7 @@ class Chunk {
 		void draw();
 	private:
 		std::vector<sf::Vertex*> vertices;
-    sf::Texture background;
+    	sf::Texture background;
 };
 
 #endif

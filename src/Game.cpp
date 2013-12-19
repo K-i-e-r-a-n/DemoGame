@@ -12,6 +12,9 @@ void Game::init(float windowX, float windowY, float aspectX, float aspectY, floa
 	aspectRatio.x = aspectX;
 	aspectRatio.y = aspectY;
 	gameState = 1;
+
+	//adding a world to test
+	worlds.push_back(new World);
 }
 
 //Main Game Loop
@@ -20,11 +23,16 @@ int Game::run() {
 	while (gameState == 1) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed)
+			if (event.type == sf::Event::Closed) {
 				window.close();
+				gameState = 0;
+			}
+
 		}
 
 		window.clear(sf::Color::Black);
+		for (auto world : worlds)
+			world->draw;
 		window.display();
 	}
 
