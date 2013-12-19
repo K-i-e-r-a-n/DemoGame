@@ -5,6 +5,7 @@ extern sf::RenderWindow Game::window;
 extern sf::Vector2f Game::aspectRatio;
 extern int Game::gameState;
 extern std::map<std::string, sf::Texture> Game::textures;
+extern std::vector<World*> Game::worlds;
 
 void Game::init(float windowX, float windowY, float aspectX, float aspectY, float conv) {
 	window.create(sf::VideoMode(windowX, windowY), "Such Game");
