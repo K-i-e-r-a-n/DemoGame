@@ -5,7 +5,6 @@ extern sf::RenderWindow Game::window;
 extern sf::Vector2f Game::aspectRatio;
 extern int Game::gameState;
 extern std::map<std::string, sf::Texture> Game::textures;
-extern std::vector<World*> Game::worlds;
 
 void Game::init(float windowX, float windowY, float aspectX, float aspectY, float conv) {
 	window.create(sf::VideoMode(windowX, windowY), "Such Game");
@@ -14,30 +13,6 @@ void Game::init(float windowX, float windowY, float aspectX, float aspectY, floa
 	aspectRatio.y = aspectY;
 	gameState = 1;
 
-	//adding a world to test
-	worlds.push_back(new World);
-}
-
-//Main Game Loop
-int Game::run() {
-	
-	while (gameState == 1) {
-		sf::Event event;
-		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed) {
-				window.close();
-				gameState = 0;
-			}
-
-		}
-
-		window.clear(sf::Color::Black);
-		for (auto world : worlds)
-			world->draw();
-		window.display();
-	}
-
-	return 0;
 }
 
 std::vector<sf::Vertex> Game::convertToPixels(std::vector<sf::Vertex*> vertices) {
@@ -87,4 +62,9 @@ int Game::getGameState() {
 
 sf::Texture* Game::getTexture(std::string textureName) {
 	return &textures[textureName];
+}
+
+//setters
+void Game::setGameState(int state) {
+	gameState = state;
 }
