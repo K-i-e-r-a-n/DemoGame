@@ -14,6 +14,7 @@ void Game::init(float windowX, float windowY, float aspectX, float aspectY, floa
 	gameState = 1;
 }
 
+//Main Game Loop
 int Game::run() {
 	
 	while (gameState == 1) {
@@ -55,4 +56,26 @@ sf::Vertex* Game::getElement(std::vector<sf::Vertex*> vertices, int i)
 
 void Game::loadTexture(std::string textureName) {
 	//todo
+}
+
+
+//getters
+sf::RenderWindow* Game::getWindow() {
+	return &window;
+}
+
+sf::Vector2f* Game::getAspectRatio() {
+	return &aspectRatio;
+}
+
+float Game::getConversion() {
+	return conversion;
+}
+
+int Game::getGameState() {
+	return gameState;
+}
+
+sf::Texture* Game::getTexture(std::string textureName) {
+	return &textures[textureName];
 }
