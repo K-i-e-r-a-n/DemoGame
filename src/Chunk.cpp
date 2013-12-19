@@ -2,7 +2,7 @@
 
 Chunk::Chunk(std::vector<sf::Vertex*> &vertices) {
   this->vertices = vertices;
-  background.loadFromFile("resources/ground.jpg");
+  background.loadFromFile("resources/dirt.jpg");
   background.setRepeated(true);
 }
 
