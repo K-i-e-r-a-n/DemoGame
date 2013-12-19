@@ -14,6 +14,7 @@ class Game {
 	public:
 		static void init(float windowX, float windowY, float aspectX, float aspectY, float conv);
 		static std::vector<sf::Vertex> convertToPixels(std::vector<sf::Vertex*> vertices);
+		static sf::Vector2f convertToPixels(sf::Vector2f vector);
 		static sf::Vertex* getElement(std::vector<sf::Vertex*> vertices, int i);
 		static void loadTexture(std::string textureName);
 		

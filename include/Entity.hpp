@@ -1,6 +1,7 @@
 #ifndef ENTITY_HPP
 #define ENTITY_HPP
 #include <SFML/Graphics.hpp>
+#include "Game.hpp"
 
 class Entity {
 	public:
@@ -18,6 +19,14 @@ class Player : public Entity {
 	private:
 		sf::Vector2f velocity;
 		sf::Vector2f accel;
+		
+		//bodyparts
+		sf::CircleShape head;
+		sf::RectangleShape torso;
+		sf::RectangleShape rightArm;
+		sf::RectangleShape leftArm;
+		sf::RectangleShape rightLeg;
+		sf::RectangleShape leftLeg;
 };
 
 #endif

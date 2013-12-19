@@ -30,6 +30,12 @@ std::vector<sf::Vertex> Game::convertToPixels(std::vector<sf::Vertex*> vertices)
 	return copy;
 }
 
+sf::Vector2f Game::convertToPixels(sf::Vector2f vector) {
+	vector.x = vector.x * aspectRatio.x * conversion;
+	vector.y = window.getSize().y - (vector.y * aspectRatio.y * conversion);
+	return vector;
+}
+
 sf::Vertex* Game::getElement(std::vector<sf::Vertex*> vertices, int i)
 {
 	if (i >= vertices.size())
