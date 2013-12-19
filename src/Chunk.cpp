@@ -1,3 +1,5 @@
+#include "Chunk.hpp"
+
 Chunk::Chunk(std::vector<sf::Vertex*> &vertices) {
   this->vertices = vertices;
   background.loadFromFile("resources/ground.png");
@@ -45,8 +47,8 @@ void Chunk::draw() {
 	  }
 	  i++;
 	}
-  Game::window.draw(&(Game::convertToPixels(triangles))[0], triangles.size(), sf::Triangles, &(Game::textures["background"]));
-	//Gwindow.draw(&(Game::convertToPixels(vertices))[0], vertices.size(), sf::LinesStrip);
+  Game::getWindow()->draw(&(Game::convertToPixels(triangles))[0], triangles.size(), sf::Triangles, Game::getTexture("background"));
+	//Game::getWindow()->draw(&(Game::convertToPixels(vertices))[0], vertices.size(), sf::LinesStrip);
 }
 
 

@@ -1,7 +1,7 @@
 #include "World.hpp"
 
 World::World() {
-	//generate one funky chunk. Don't forget to .
+	//generate one funky chunk. Don't forget to texture.
   std::vector<sf::Vertex*> vertices;;
   vertices.push_back(new sf::Vertex(sf::Vector2f(1, 1), sf::Vector2f(1, 1)));
   vertices.push_back(new sf::Vertex(sf::Vector2f(1, 5), sf::Vector2f(1, 5)));
@@ -19,9 +19,9 @@ std::vector<Chunk*> World::getChunks() {
 	return chunks;
 }
 
-void World::draw(sf::RenderWindow &window, sf::Vector2f &aspectRatio, float conversion) {
+void World::draw() {
 	//Drawing chunks
 	for (auto chunk : chunks)
-		chunk->draw(window, aspectRatio, conversion);
+		chunk->draw();
 	
 }
