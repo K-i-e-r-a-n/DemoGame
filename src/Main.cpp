@@ -1,7 +1,7 @@
 #include "World.hpp"
 
 int main() {
-	Game::init(1920, 1080, 16, 9, 10);
+	Game::init(1600, 900, 16, 9, 10);
 	World world;
 	
 	while(Game::getGameState() > 0) {
