@@ -2,7 +2,8 @@
 
 Chunk::Chunk(std::vector<sf::Vertex*> &vertices) {
   this->vertices = vertices;
-  background.loadFromFile("resources/ground.png");
+  background.loadFromFile("resources/dirt.jpg");
+  background.setRepeated(true);
 }
 
 std::vector<sf::Vertex*> Chunk::getVertices() {
@@ -13,7 +14,7 @@ void Chunk::draw() {
   std::vector<sf::Vertex*> copy = vertices;
   std::vector<sf::Vertex*> triangles;
   int i = 0;
-  float theta = 0.0;
+  //float theta = 0.0;
   sf::Vector2f u;
   sf::Vector2f v;
   int previousSize = copy.size();
@@ -47,7 +48,10 @@ void Chunk::draw() {
 	  }
 	  i++;
 	}
-  Game::getWindow()->draw(&(Game::convertToPixels(triangles))[0], triangles.size(), sf::Triangles, Game::getTexture("background"));
+  //sf::Sprite sprite;
+  //sprite.setTexture(background);
+  //Game::getWindow()->draw(sprite);
+  Game::getWindow()->draw(&(Game::convertToPixels(triangles))[0], triangles.size(), sf::Triangles, &background/*Game::getTexture("background")*/);
 	//Game::getWindow()->draw(&(Game::convertToPixels(vertices))[0], vertices.size(), sf::LinesStrip);
 }
 

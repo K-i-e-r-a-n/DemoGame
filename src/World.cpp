@@ -1,8 +1,14 @@
 #include "World.hpp"
 
 World::World() {
-	//generate one funky chunk. Don't forget to texture.
-  std::vector<sf::Vertex*> vertices;;
+	std::vector<sf::Vertex*> vertices;
+  /* test coords
+  vertices.push_back(new sf::Vertex(sf::Vector2f(0,0), sf::Vector2f(0,0)));
+  vertices.push_back(new sf::Vertex(sf::Vector2f(0,9), sf::Vector2f(0,9)));
+  vertices.push_back(new sf::Vertex(sf::Vector2f(9,10), sf::Vector2f(9,10)));
+  vertices.push_back(new sf::Vertex(sf::Vector2f(10,0), sf::Vector2f(10,0)));
+  */
+  
   vertices.push_back(new sf::Vertex(sf::Vector2f(1, 1), sf::Vector2f(1, 1)));
   vertices.push_back(new sf::Vertex(sf::Vector2f(1, 5), sf::Vector2f(1, 5)));
   vertices.push_back(new sf::Vertex(sf::Vector2f(3, 1), sf::Vector2f(3, 1)));
@@ -22,6 +28,5 @@ std::vector<Chunk*> World::getChunks() {
 void World::draw() {
 	//Drawing chunks
 	for (auto chunk : chunks)
-		chunk->draw();
-	
+		chunk->draw();	
 }
