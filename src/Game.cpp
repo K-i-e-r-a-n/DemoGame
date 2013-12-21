@@ -5,7 +5,9 @@ extern sf::RenderWindow Game::window;
 extern sf::Vector2f Game::aspectRatio;
 extern int Game::gameState;
 extern std::map<std::string, sf::Texture> Game::textures;
+extern sf::Event Game::event;
 
+//general game functions
 void Game::init(float windowX, float windowY, float aspectX, float aspectY, float conv) {
 	window.create(sf::VideoMode(windowX, windowY), "Such Game");
 	conversion = conv;
@@ -15,6 +17,16 @@ void Game::init(float windowX, float windowY, float aspectX, float aspectY, floa
 
 }
 
+void Game::handleEvents() {
+	while(window.pollEvent(event)) {
+		if (event.type == sf::Event::Closed) {
+			window.close();
+			gameState = 0;
+		}
+	}
+}
+
+//math functions
 std::vector<sf::Vertex> Game::convertToPixels(std::vector<sf::Vertex*> vertices) {
 	std::vector<sf::Vertex> copy;
 	for (auto vertex : vertices) {
@@ -30,11 +42,18 @@ std::vector<sf::Vertex> Game::convertToPixels(std::vector<sf::Vertex*> vertices)
 	return copy;
 }
 
-sf::Vector2f Game::convertToPixels(sf::Vector2f vector) {
+sf::Vector2f Game::convertPosToPixels(sf::Vector2f vector) {
 	vector.x = vector.x * aspectRatio.x * conversion;
 	vector.y = window.getSize().y - (vector.y * aspectRatio.y * conversion);
 	return vector;
 }
+
+sf::Vector2f Game::convertSizeToPixels(sf::Vector2f vector) {
+	vector.x = vector.x * aspectRatio.x * conversion;
+	vector.y = vector.y * aspectRatio.y * conversion;
+	return vector;
+}
+
 
 sf::Vertex* Game::getElement(std::vector<sf::Vertex*> vertices, int i)
 {
@@ -44,6 +63,7 @@ sf::Vertex* Game::getElement(std::vector<sf::Vertex*> vertices, int i)
 }
 
 
+//texture functions
 void Game::loadTexture(std::string textureName) {
 	//todo
 }

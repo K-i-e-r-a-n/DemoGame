@@ -6,7 +6,7 @@
 class Entity {
 	public:
 		Entity(double mass, sf::Vector2f size, sf::Vector2f position);
-	private:
+	protected:
 		double mass;
 		sf::Vector2f size;
 		sf::Vector2f position;
@@ -16,9 +16,12 @@ class Entity {
 class Player : public Entity {
 	public:
 		Player(double mass, sf::Vector2f size, sf::Vector2f position);
+		void draw();
 	private:
+		sf::Vector2f screenPos;
 		sf::Vector2f velocity;
 		sf::Vector2f accel;
+		bool direction; // 0=left 1=right
 		
 		//bodyparts
 		sf::CircleShape head;

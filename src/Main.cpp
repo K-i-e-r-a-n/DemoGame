@@ -1,20 +1,17 @@
 #include "World.hpp"
+#include "Entity.hpp"
 
 int main() {
 	Game::init(1600, 900, 16, 9, 10);
 	World world;
+	Player player(10, sf::Vector2f(0.5, 1.8), sf::Vector2f(1, 0));
 	
 	while(Game::getGameState() > 0) {
-		sf::Event event;
-		while (Game::getWindow()->pollEvent(event)) {
-			if (event.type == sf::Event::Closed) {
-				Game::getWindow()->close();
-				Game::setGameState(0);
-			}
-		}
+		Game::handleEvents();
 
 		Game::getWindow()->clear();
 		world.draw();
+		player.draw();
 		Game::getWindow()->display();
 	}
 }
