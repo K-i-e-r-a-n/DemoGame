@@ -2,7 +2,7 @@
 #include "Entity.hpp"
 
 int main() {
-	Game::init(1600, 900, 16, 9, 10);
+	Game::init(1280, 720, 16, 9, 10);
 	World world;
 	Player player(10, sf::Vector2f(0.5, 1.8), sf::Vector2f(1, 0));
 	
