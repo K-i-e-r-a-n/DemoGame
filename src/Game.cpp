@@ -22,7 +22,7 @@ void Game::handleEvents() {
 		if (event.type == sf::Event::Closed) {
 			window.close();
 			gameState = 0;
-		}
+		}  
 	}
 }
 

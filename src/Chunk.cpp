@@ -5,6 +5,11 @@ Chunk::Chunk(std::vector<sf::Vertex*> &vertices) {
   background.loadFromFile("resources/dirt.jpg");
   background.setRepeated(true);
 }
+  
+void Chunk::appendVertices(std::vector<sf::Vertex*> &vertices)
+{
+  
+}  
 
 std::vector<sf::Vertex*> Chunk::getVertices() {
 	return vertices;

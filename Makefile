@@ -1,7 +1,7 @@
 CC := clang++
 CXX := $(CC)
-CXXFLAGS := -Wall -ggdb -I ~/dev/SFML-2.1/include -I include -std=c++11
-LDFLAGS := -L ~/dev/SFML-2.1/lib -lsfml-graphics -lsfml-window -lsfml-system
+CXXFLAGS := -Wall -ggdb -I ~/SFML-2.1/include -I include -std=c++11
+LDFLAGS := -L ~/SFML-2.1/lib -lsfml-graphics -lsfml-window -lsfml-system
 OBJS := $(patsubst %.cpp, %.o, $(wildcard src/*.cpp))
 
 game: $(OBJS)

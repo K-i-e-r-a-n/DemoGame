@@ -9,6 +9,7 @@ class Chunk {
 	public:
 		Chunk(std::vector<sf::Vertex*> &vertices);
 		std::vector<sf::Vertex*> getVertices();
+    void appendVertices(std::vector<sf::Vertex*> &vertices);
 		void draw();
 	private:
 		std::vector<sf::Vertex*> vertices;
