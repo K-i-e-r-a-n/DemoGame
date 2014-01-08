@@ -17,6 +17,7 @@ void Game::init(float windowX, float windowY, float aspectX, float aspectY, floa
 
 }
 
+/*
 void Game::handleEvents() {
 	while(window.pollEvent(event)) {
 		if (event.type == sf::Event::Closed) {
@@ -25,6 +26,7 @@ void Game::handleEvents() {
 		}  
 	}
 }
+*/
 
 //math functions
 std::vector<sf::Vertex> Game::convertToPixels(std::vector<sf::Vertex*> vertices) {
@@ -54,6 +56,12 @@ sf::Vector2f Game::convertSizeToPixels(sf::Vector2f vector) {
 	return vector;
 }
 
+sf::Vector2f Game::convertPixelsToPos(sf::Vector2f vector)
+{
+  vector.x = (vector.x/aspectRatio.x)/conversion;
+  vector.y = ((window.getSize().y - vector.y)/aspectRatio.y)/conversion;
+  return vector;
+}
 
 sf::Vertex* Game::getElement(std::vector<sf::Vertex*> vertices, int i)
 {
@@ -70,6 +78,11 @@ void Game::loadTexture(std::string textureName) {
 
 
 //getters
+sf::Event* Game::getEvent()
+{
+  return &event;
+}
+
 sf::RenderWindow* Game::getWindow() {
 	return &window;
 }

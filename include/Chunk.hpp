@@ -10,10 +10,11 @@ class Chunk {
 		Chunk(std::vector<sf::Vertex*> &vertices);
 		std::vector<sf::Vertex*> getVertices();
     void appendVertices(std::vector<sf::Vertex*> &vertices);
+    void appendVertex(sf::Vertex* vertex);
 		void draw();
 	private:
 		std::vector<sf::Vertex*> vertices;
-    	sf::Texture background;
+    sf::Texture background;
 };
 
 #endif

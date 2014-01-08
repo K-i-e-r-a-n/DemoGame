@@ -5,17 +5,26 @@ Chunk::Chunk(std::vector<sf::Vertex*> &vertices) {
   background.loadFromFile("resources/dirt.jpg");
   background.setRepeated(true);
 }
-  
-void Chunk::appendVertices(std::vector<sf::Vertex*> &vertices)
+
+void Chunk::appendVertex(sf::Vertex* vertex)
 {
-  
+  vertices.push_back(vertex);
+}
+
+void Chunk::appendVertices(std::vector<sf::Vertex*> &additions) 
+{
+  for (int i = 0; i < additions.size(); i++) 
+  {
+    this->vertices.push_back(additions[i]);
+  } 
 }  
 
 std::vector<sf::Vertex*> Chunk::getVertices() {
 	return vertices;
 }
 
-void Chunk::draw() {
+void Chunk::draw() 
+{
   std::vector<sf::Vertex*> copy = vertices;
   std::vector<sf::Vertex*> triangles;
   int i = 0;
@@ -23,9 +32,9 @@ void Chunk::draw() {
   sf::Vector2f u;
   sf::Vector2f v;
   int previousSize = copy.size();
-  while (copy.size() > 2)
+  while (copy.size() > 2) 
   {
-    if (i >= copy.size())
+    if (i >= copy.size()) 
     {
       i = 0;
       if (copy.size() == previousSize)
