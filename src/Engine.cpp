@@ -1,10 +1,10 @@
 #include "Engine.hpp"
 
-Engine(sf::RenderWindow* window-> sf::Vector2f aspectRatio, float conversion)
+Engine::Engine(sf::RenderWindow* window, sf::Vector2f aspectRatio, float conversion)
 {
-  this.window->= window;
-  this.apectRatio = aspectRatio;
-  this.conversion = conversion;
+  this->window = window;
+  this->aspectRatio = aspectRatio;
+  this->conversion = conversion;
 }
 
 std::vector<sf::Vertex> Engine::convertToPixels(std::vector<sf::Vertex*> vertices) {
