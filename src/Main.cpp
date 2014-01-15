@@ -15,6 +15,7 @@ int main() {
     std::cout << "Error: Font not found" << std::endl;
   sf::Text text;
   text.setFont(font);
+  text.setCharacterSize(10);
   std::stringstream ss;
   
   sf::Event* event = Game::getEvent();
