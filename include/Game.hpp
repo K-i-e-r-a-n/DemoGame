@@ -16,7 +16,7 @@ class Game {
 		static int gameState;
 		static std::map<std::string, sf::Texture> textures;
 		static sf::Event event;
-		static World world = new *World();	
+		static World world;	
 	public:
 		static void init(float windowX, float windowY, float aspectX, float aspectY, float conv);
 		static std::vector<sf::Vertex> convertToPixels(std::vector<sf::Vertex*> vertices);
@@ -35,7 +35,6 @@ class Game {
 		static int getGameState();
 		static sf::Texture* getTexture(std::string textureName);
     static sf::Event* getEvent();
-
 		//setters
 		static void setGameState(int state);
 		
