@@ -2,6 +2,7 @@
 #define GAME_HPP
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <cmath>
 #include "World.hpp"
 #include "Chunk.hpp"
 #include "Engine.hpp"
@@ -16,7 +17,8 @@ class Game {
 		static int gameState;
 		static std::map<std::string, sf::Texture> textures;
 		static sf::Event event;
-		static World world;	
+		static World world;
+    static sf::RenderTexture rTexture;
 	public:
 		static void init(float windowX, float windowY, float aspectX, float aspectY, float conv);
 		static std::vector<sf::Vertex> convertToPixels(std::vector<sf::Vertex*> vertices);

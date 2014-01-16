@@ -1,7 +1,8 @@
 #include "Chunk.hpp"
 
-Chunk::Chunk(std::vector<sf::Vertex*> &vertices) {
+Chunk::Chunk(std::vector<sf::Vertex*> &vertices, sf::RenderTexture* rTexture) {
   this->vertices = vertices;
+  this->rTexture = rTexture;
   background.loadFromFile("resources/dirt.jpg");
   background.setRepeated(true);
 }
@@ -62,7 +63,7 @@ void Chunk::draw()
 	  }
 	  i++;
 	}  
-  //Engine::getWindow()->draw(&(Engine::convertToPixels(triangles))[0], triangles.size(), sf::Triangles, &background);
+  rTexture->draw(&(Engine::convertToPixels(triangles))[0], triangles.size(), sf::Triangles, &background);
 }
 
 

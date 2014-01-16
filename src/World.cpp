@@ -1,6 +1,7 @@
 #include "World.hpp"
 
-World::World() {
+World::World(sf::RenderTexture* rTexture){
+  this->rTexture = rTexture;
 	std::vector<sf::Vertex*> vertices;
   /* test coords
   vertices.push_back(new sf::Vertex(sf::Vector2f(0,0), sf::Vector2f(0,0)));
@@ -18,7 +19,7 @@ World::World() {
   //vertices.push_back(new sf::Vertex(sf::Vector2f(5, 2), sf::Vector2f(5, 2)));
   //vertices.push_back(new sf::Vertex(sf::Vector2f(4, 3), sf::Vector2f(4, 3)));
   //vertices.push_back(new sf::Vertex(sf::Vector2f(6, 1), sf::Vector2f(6, 1)));
-  chunks.push_back(new Chunk(vertices));	
+  chunks.push_back(new Chunk(vertices, rTexture));	
 }
 
 std::vector<Chunk*> World::getChunks() {

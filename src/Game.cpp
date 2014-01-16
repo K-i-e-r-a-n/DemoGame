@@ -2,7 +2,8 @@
 
 
 //extern Player player;
-extern World Game::world;
+extern sf::RenderTexture Game::rTexture;
+extern World Game::world = *(new World(&rTexture));
 extern float Game::conversion;
 extern sf::RenderWindow Game::window;
 extern sf::Vector2f Game::aspectRatio;
@@ -17,6 +18,7 @@ void Game::init(float windowX, float windowY, float aspectX, float aspectY, floa
 	aspectRatio.x = aspectX;
 	aspectRatio.y = aspectY;
 	gameState = 1;
+  rTexture.create(floor(windowX), floor(windowY), false);
   //Player player(10, sf::Vector2f(0.5, 1.8), sf::Vector2f(1, 0));
 	Engine::init(&window, aspectRatio, conversion);
 }

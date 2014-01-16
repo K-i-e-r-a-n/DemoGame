@@ -5,10 +5,11 @@
 
 class World {
 	public:
-		World();
+		World(sf::RenderTexture* rTexture);
 		std::vector<Chunk*> getChunks();
 		void draw();
 	private:
+    sf::RenderTexture* rTexture;
 		std::vector<Chunk*> chunks;
 		//std::vector<Entity*> entities;
 };

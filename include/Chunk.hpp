@@ -7,12 +7,13 @@
 
 class Chunk {
 	public:
-		Chunk(std::vector<sf::Vertex*> &vertices);
+		Chunk(std::vector<sf::Vertex*> &vertices, sf::RenderTexture* rTexture);
 		std::vector<sf::Vertex*> getVertices();
     void appendVertices(std::vector<sf::Vertex*> &vertices);
     void appendVertex(sf::Vertex* vertex);
 		void draw();
 	private:
+    sf::RenderTexture* rTexture;
 		std::vector<sf::Vertex*> vertices;
     sf::Texture background;
 };
