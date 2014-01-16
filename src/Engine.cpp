@@ -1,10 +1,15 @@
 #include "Engine.hpp"
 
-Engine::Engine(sf::RenderWindow* window, sf::Vector2f aspectRatio, float conversion)
+extern float Engine::conversion;
+extern sf::RenderWindow* Engine::window;
+extern sf::Vector2f Engine::aspectRatio;
+extern std::map<std::string, sf::Texture> Engine::textures;
+
+void Engine::init(sf::RenderWindow* win, sf::Vector2f aspectR, float conv)
 {
-  this->window = window;
-  this->aspectRatio = aspectRatio;
-  this->conversion = conversion;
+  window = win;
+  aspectRatio = aspectR;
+  conversion = conv;
 }
 
 std::vector<sf::Vertex> Engine::convertToPixels(std::vector<sf::Vertex*> vertices) {

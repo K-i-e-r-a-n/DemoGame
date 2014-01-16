@@ -2,7 +2,7 @@
 #define CHUNK_HPP
 #include <vector>
 #include <SFML/Graphics.hpp>
-#include "Game.hpp"
+#include "Engine.hpp"
 #include <cmath>
 
 class Chunk {

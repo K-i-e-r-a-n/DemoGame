@@ -1,7 +1,7 @@
 #ifndef WORLD_HPP
 #define WORLD_HPP
 #include "Chunk.hpp"
-#include "Entity.hpp"
+//#include "Entity.hpp" until this is fixed
 
 class World {
 	public:
@@ -10,7 +10,7 @@ class World {
 		void draw();
 	private:
 		std::vector<Chunk*> chunks;
-		std::vector<Entity*> entities;
+		//std::vector<Entity*> entities;
 };
 
 #endif

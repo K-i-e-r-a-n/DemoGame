@@ -15,9 +15,9 @@ Player::Player(double mass, sf::Vector2f size, sf::Vector2f position) : Entity(m
 	direction = 1;
 	
 	//calculating bodypart's Sizes
-	float headSize = Game::convertSizeToPixels(size).y * 0.1;
+	float headSize = Engine::convertSizeToPixels(size).y * 0.1;
 	sf::Vector2f torsoSize, armSize, legSize;
-	torsoSize = armSize = legSize = Game::convertSizeToPixels(size);
+	torsoSize = armSize = legSize = Engine::convertSizeToPixels(size);
 
 	torsoSize.x *= 0.4;
 	torsoSize.y *= 0.4;
@@ -51,8 +51,8 @@ Player::Player(double mass, sf::Vector2f size, sf::Vector2f position) : Entity(m
 	leftLeg.setFillColor(sf::Color::Blue);
 
 	//setting screen position based to center
-	screenPos.x = Game::getWindow()->getSize().x/2;
-	screenPos.y = Game::getWindow()->getSize().y/2;
+	//screenPos.x = Game::getWindow()->getSize().x/2;
+	//screenPos.y = Game::getWindow()->getSize().y/2;
 
 }
 
@@ -61,7 +61,7 @@ void Player::draw() {
 	sf::Vector2f headPos, torsoPos, armPos, legPos;
 	headPos = torsoPos = armPos = legPos = screenPos;	
 
-	headPos.y -= Game::convertSizeToPixels(size).y;
+	headPos.y -= Engine::convertSizeToPixels(size).y;
 	torsoPos.y = headPos.y + head.getRadius() * 2;
 	armPos.y = torsoPos.y + torso.getSize().y/10;
 	legPos.y = torsoPos.y + torso.getSize().y;
@@ -76,22 +76,22 @@ void Player::draw() {
 
 	//drawing body parts
 	if (direction == 1) {
-		Game::getWindow()->draw(leftArm);
-		Game::getWindow()->draw(leftLeg);
+		//Game::getWindow()->draw(leftArm);
+		//Game::getWindow()->draw(leftLeg);
 	}
 	else {
-		Game::getWindow()->draw(rightArm);
-		Game::getWindow()->draw(rightLeg);
+		//Game::getWindow()->draw(rightArm);
+		//Game::getWindow()->draw(rightLeg);
 	}
-	Game::getWindow()->draw(head);
-	Game::getWindow()->draw(torso);
+	//Game::getWindow()->draw(head);
+	//Game::getWindow()->draw(torso);
 	if (direction == 0) {
-		Game::getWindow()->draw(leftArm);
-		Game::getWindow()->draw(leftLeg);
+		//Game::getWindow()->draw(leftArm);
+		//Game::getWindow()->draw(leftLeg);
 	}
 	else {
-		Game::getWindow()->draw(rightArm);
-		Game::getWindow()->draw(rightLeg);
+		//Game::getWindow()->draw(rightArm);
+		//Game::getWindow()->draw(rightLeg);
 	}
 
 }

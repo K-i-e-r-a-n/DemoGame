@@ -1,5 +1,8 @@
 #include "Game.hpp"
 
+
+//extern Player player;
+extern World world;
 extern float Game::conversion;
 extern sf::RenderWindow Game::window;
 extern sf::Vector2f Game::aspectRatio;
@@ -14,20 +17,38 @@ void Game::init(float windowX, float windowY, float aspectX, float aspectY, floa
 	aspectRatio.x = aspectX;
 	aspectRatio.y = aspectY;
 	gameState = 1;
+	//Player player(10, sf::Vector2f(0.5, 1.8), sf::Vector2f(1, 0));
+	Engine::init(&window, aspectRatio, conversion);
+}
 
+
+void Game::handleEvents() 
+{	
+	while(window.pollEvent(event))
+  {
+    if (event.type == sf::Event::Closed)
+    {
+      window.close();
+      Game::setGameState(0);
+    }
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+    {
+      //ss.str("");
+      sf::Vector2i intPos = sf::Mouse::getPosition(window);
+      sf::Vector2f pos;
+      pos.x = intPos.x;
+      pos.y = intPos.y;
+      pos = Engine::convertPixelsToPos(pos);
+      //ss << pos.x;
+      //ss << " ";
+      //ss << pos.y;
+      sf::Vertex* vert = new sf::Vertex(pos, pos);
+      world.getChunks()[0]->appendVertex(vert);
+    }
+	}
 }
 
 /*
-void Game::handleEvents() {
-	while(window.pollEvent(event)) {
-		if (event.type == sf::Event::Closed) {
-			window.close();
-			gameState = 0;
-		}  
-	}
-}
-*/
-
 //math functions
 std::vector<sf::Vertex> Game::convertToPixels(std::vector<sf::Vertex*> vertices) {
 	std::vector<sf::Vertex> copy;
@@ -75,7 +96,7 @@ sf::Vertex* Game::getElement(std::vector<sf::Vertex*> vertices, int i)
 void Game::loadTexture(std::string textureName) {
 	//todo
 }
-
+*/
 
 //getters
 sf::Event* Game::getEvent()
