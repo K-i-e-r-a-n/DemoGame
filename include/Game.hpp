@@ -20,12 +20,7 @@ class Game {
 		static World world;
     static sf::RenderTexture rTexture;
 	public:
-		static void init(float windowX, float windowY, float aspectX, float aspectY, float conv);
-		static std::vector<sf::Vertex> convertToPixels(std::vector<sf::Vertex*> vertices);
-		static sf::Vector2f convertSizeToPixels(sf::Vector2f vector);
-		static sf::Vector2f convertPosToPixels(sf::Vector2f vector);
-    static sf::Vector2f convertPixelsToPos(sf::Vector2f vector);
-		static sf::Vertex* getElement(std::vector<sf::Vertex*> vertices, int i);
+    static void init(float windowX, float windowY, float aspectX, float aspectY, float conv);
 		static void loadTexture(std::string textureName);
 		static void handleEvents();
 		static void draw();

@@ -2,8 +2,7 @@
 
 
 //extern Player player;
-extern sf::RenderTexture Game::rTexture;
-extern World Game::world = *(new World(&rTexture));
+extern World Game::world = *(new World(&window));
 extern float Game::conversion;
 extern sf::RenderWindow Game::window;
 extern sf::Vector2f Game::aspectRatio;
@@ -18,7 +17,6 @@ void Game::init(float windowX, float windowY, float aspectX, float aspectY, floa
 	aspectRatio.x = aspectX;
 	aspectRatio.y = aspectY;
 	gameState = 1;
-  rTexture.create(floor(windowX), floor(windowY), false);
   //Player player(10, sf::Vector2f(0.5, 1.8), sf::Vector2f(1, 0));
 	Engine::init(&window, aspectRatio, conversion);
 }
@@ -50,55 +48,10 @@ void Game::handleEvents()
 	}
 }
 
-/*
-//math functions
-std::vector<sf::Vertex> Game::convertToPixels(std::vector<sf::Vertex*> vertices) {
-	std::vector<sf::Vertex> copy;
-	for (auto vertex : vertices) {
-		copy.push_back(*vertex);
-	}
-
-	for (int a  = 0; a < vertices.size(); a++) {
-		copy[a].position.x = copy[a].position.x * aspectRatio.x * conversion;
-		copy[a].position.y = window.getSize().y - (copy[a].position.y * aspectRatio.y * conversion);
-		copy[a].texCoords.x = copy[a].texCoords.x * aspectRatio.x * conversion;
-		copy[a].texCoords.y = window.getSize().y - (copy[a].texCoords.y * aspectRatio.y * conversion);
-	}
-	return copy;
+void Game::draw()
+{ 
+  world.draw();
 }
-
-sf::Vector2f Game::convertPosToPixels(sf::Vector2f vector) {
-	vector.x = vector.x * aspectRatio.x * conversion;
-	vector.y = window.getSize().y - (vector.y * aspectRatio.y * conversion);
-	return vector;
-}
-
-sf::Vector2f Game::convertSizeToPixels(sf::Vector2f vector) {
-	vector.x = vector.x * aspectRatio.x * conversion;
-	vector.y = vector.y * aspectRatio.y * conversion;
-	return vector;
-}
-
-sf::Vector2f Game::convertPixelsToPos(sf::Vector2f vector)
-{
-  vector.x = (vector.x/aspectRatio.x)/conversion;
-  vector.y = ((window.getSize().y - vector.y)/aspectRatio.y)/conversion;
-  return vector;
-}
-
-sf::Vertex* Game::getElement(std::vector<sf::Vertex*> vertices, int i)
-{
-	if (i >= vertices.size())
-		i %= vertices.size();	
-	return vertices[i];
-}
-
-
-//texture functions
-void Game::loadTexture(std::string textureName) {
-	//todo
-}
-*/
 
 //getters
 sf::Event* Game::getEvent()

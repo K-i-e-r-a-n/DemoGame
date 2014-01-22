@@ -18,11 +18,11 @@ int main() {
   
   
 	while(Game::getGameState() > 0) {
-		Game::handleEvents();	
-	}
-  
-  text.setString(ss.str());
-	Game::getWindow()->clear();
-	Game::getWindow()->draw(text);
-	Game::getWindow()->display();
+  	Game::handleEvents();	
+  	text.setString(ss.str());
+  	Game::getWindow()->clear();
+    Game::draw();
+	  Game::getWindow()->draw(text);
+	  Game::getWindow()->display();
+  }
 }
